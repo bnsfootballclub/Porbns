@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BARUDAK NURUSSALAM FOOTBALL CLUB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #000;
+      --accent: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: var(--primary);
+      color: var(--accent);
+      text-align: center;
+    }
+
+    header {
+      background: var(--primary);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #444;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      margin: 10px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: clamp(14px, 2.5vw, 18px);
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    .hero {
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .hero h2 {
+      font-size: clamp(28px, 6vw, 48px);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: clamp(14px, 4vw, 20px);
+      color: #ccc;
+    }
+
+    .section {
+      padding: 60px 30px;
+      display: none;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .section.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    h2 {
+      font-size: clamp(20px, 5vw, 30px);
+      margin-bottom: 20px;
+    }
+
+    ul, p {
+      font-size: clamp(14px, 3.2vw, 18px);
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #444;
+      text-align: center;
+      font-size: clamp(12px, 2.8vw, 16px);
+    }
+
+    th {
+      background: #111;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-top: 1px solid #444;
+    }
+
+    @media (max-width: 400px) {
+      .hero h2 { font-size: 28px; }
+      nav a { font-size: 14px; }
+    }
+
+    @media (min-width: 601px) and (max-width: 900px) {
+      nav a { font-size: 16px; }
+      .hero p { font-size: 18px; }
+      h2, ul, p { font-size: 18px; }
+    }
+
+    @media (min-width: 1200px) {
+      .hero h2 { font-size: 52px; }
+      nav a { font-size: 20px; }
+      table td, table th { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#" onclick="showSection('profil')">Profil</a>
+      <a href="#" onclick="showSection('pemain')">Pemain</a>
+      <a href="#" onclick="showSection('manajemen')">Manajemen</a>
+      <a href="#" onclick="showSection('sosial')">Sosial Media</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="awal">
+    <h2>SELAMAT DATANG</h2>
+    <p>DI HOMEBASE BNS FOOTBALL CLUB</p>
+  </div>
+
+  <div id="profil" class="section">
+    <h2>Profil Klub</h2>
+    <p>Nama: <strong>BNS Football Club</strong></p>
+    <p>Nama Lengkap: <strong>Barudak Nurussalam Football Club</strong></p>
+    <p>Julukan: <strong>Budak Kerentil</strong></p>
+    <p>Tahun Berdiri: <strong>2014</strong></p>
+    <p>Lapangan: <strong>Sugema Sukamanah</strong></p>
+    <p>Alamat: <strong>Kp. Nurussalam RT 03 / RW 02 Ds. Sukamanah Kec. Rongga Kab. Bandung Barat 40566</strong></p>
+    <p>Level Kompetisi: <strong>Sukamanah Cup</strong></p>
+    <p>Manajemen: <strong>Forum Pemuda Nurussalam</strong></p>
+    <p>Pemilik: <strong>Masyarakat Nurussalam</strong></p>
+  </div>
+
+  <div id="pemain" class="section">
+    <h2>Daftar Pemain Sukamanah Cup 2025</h2>
+
+    <h3>Starting XI</h3>
+    <table>
+      <thead>
+        <tr><th>Nama</th><th>Posisi</th><th>No</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Fardan</td><td>Goalkeeper</td><td>1</td></tr>
+        <tr><td>Mumus</td><td>Center Back</td><td>2</td></tr>
+        <tr><td>Sandi</td><td>Center Back</td><td>3</td></tr>
+        <tr><td>Fauzan</td><td>Right Back</td><td>4</td></tr>
+        <tr><td>Hadiana</td><td>Left Back</td><td>5</td></tr>
+        <tr><td>Sofwan</td><td>Defender Midfielder</td><td>6</td></tr>
+        <tr><td>Fiat</td><td>Center Midfielder</td><td>7</td></tr>
+        <tr><td>Aji</td><td>Attacking Midfielder</td><td>8</td></tr>
+        <tr><td>Fadhil</td><td>Left Winger</td><td>9</td></tr>
+        <tr><td>Hendrik</td><td>Right Winger</td><td>10</td></tr>
+        <tr><td>Fauji</td><td>Forward</td><td>11</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 40px;">Pemain Cadangan</h3>
+    <table>
+      <thead>
+        <tr><th>Nama</th><th>Posisi</th><th>No</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Abdan</td><td>Goalkeeper</td><td>12</td></tr>
+        <tr><td>Habib</td><td>Center Back</td><td>13</td></tr>
+        <tr><td>Hasbi</td><td>Center Back</td><td>14</td></tr>
+        <tr><td>Kaka</td><td>Center Back</td><td>15</td></tr>
+        <tr><td>Ali</td><td>Center Back</td><td>16</td></tr>
+        <tr><td>Hafiz</td><td>Left Back</td><td>17</td></tr>
+        <tr><td>Azmi</td><td>Right Back</td><td>18</td></tr>
+        <tr><td>Fajar</td><td>Goalkeeper</td><td>19</td></tr>
+        <tr><td>Gilang</td><td>Defender Midfielder</td><td>20</td></tr>
+        <tr><td>Riyad</td><td>Right Winger</td><td>21</td></tr>
+        <tr><td>Nazar</td><td>Left Winger</td><td>22</td></tr>
+        <tr><td>Puja</td><td>Right Winger</td><td>23</td></tr>
+        <tr><td>Murofi</td><td>Forward</td><td>24</td></tr>
+        <tr><td>Prabu Siliwangi</td><td>Dukun</td><td>25</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="manajemen" class="section">
+    <h2>STRUKTUR MANAJEMEN</h2>
+    <p>Dewan:<br><strong>DKM Nurussalam<br>Forum Pemuda Nurussalam</strong></p>
+    <p>Ketua:<br><strong>Nasrulloh</strong></p>
+    <p>Manager Tim:<br><strong>Ayep Taryana</strong></p>
+    <p>Pelatih:<br><strong>Coach Taryat Ajum</strong></p>
+    <p>Asisten Pelatih:<br><strong>Triyanto</strong></p>
+    <p>Fisioterapis:<br><strong>Ayep Taryana<br>Mang Rahmat</strong></p>
+    <p>Media Officer:<br><strong>Faiz Ahmad</strong></p>
+    <p>Financial Manager:<br><strong>Fardan</strong></p>
+    <p>Sport Manager:<br><strong>Ahsan Fauji</strong></p>
+    <p>Apparel Kit:<br><strong>Daniel Affarel</strong></p>
+    <p>Sponsorship:<br><strong>Toko Silvi<br>La Familia<br>Mang Ure</strong></p>
+  </div>
+
+  <div id="sosial" class="section">
+    <h2>Sosial Media</h2>
+    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/bnsfootballclub/" target="_blank">@bnsfootballclub</a></p>
+    <p><strong>Youtube:</strong> <a href="https://m.youtube.com/@porbns" target="_blank">BNS Football Club</a></p>
+    <p><strong>Web Design:</strong> <a href="https://www.instagram.com/fzachmd" target="_blank">Faiz Ahmad</a></p>
+    <h3>Notebook</h3>
+    <p>Untuk friendly match dan sponsorship bisa melalui DM Instagram atau WhatsApp pada nomor berikut:</p>
+    <p>Fardan : +62 838-2028-3874</p>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.getElementById('awal').style.display = 'none';
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+  <footer>
+    Forum Pemuda Nurussalam
+  </footer>
+
+</body>
+</html>
