@@ -12,12 +12,12 @@
        1. CSS WEBSITE UTAMA (BNS FOOTBALL CLUB)
        ========================================= */
     :root {
-      --primary-bg: #0a0a0a;
-      --secondary-bg: #1a1a1a;
+      --primary-bg: #0a0f0d; /* Disesuaikan sedikit dengan tema hijau gelap */
+      --secondary-bg: #111814;
       --text-color: #ffffff;
       --text-muted: #cccccc;
-      --accent-color: #4CAF50;
-      --border-color: #333333;
+      --accent-color: #00C853; /* Menggunakan hijau dari script kedua */
+      --border-color: rgba(0,200,83,0.15);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,7 +42,7 @@
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 15px rgba(0, 200, 83, 0.1);
     }
 
     nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
@@ -75,7 +75,7 @@
       animation: fadeIn 0.6s ease-in-out;
     }
 
-    /* TIPOGRAFI WEBSITE UTAMA */
+    /* TIPOGRAFI HALAMAN LAIN (Profil, Pemain, dll) */
     .section h2 {
       font-size: clamp(20px, 5vw, 30px);
       margin-bottom: 25px;
@@ -98,12 +98,13 @@
       margin-bottom: 12px;
       line-height: 1.6;
       text-align: center;
+      font-family: 'Barlow', sans-serif; /* Menggunakan barlow agar lebih mudah dibaca */
     }
 
     .section a { color: var(--accent-color); text-decoration: none; }
     .section a:hover { opacity: 0.7; }
 
-    /* TABEL PROFESIONAL (UNTUK PROFIL DLL) */
+    /* TABEL PROFESIONAL */
     .table-container {
       overflow-x: auto;
       margin-top: 15px;
@@ -111,11 +112,11 @@
       border: 1px solid var(--border-color);
     }
 
-    table { width: 100%; border-collapse: collapse; background-color: var(--secondary-bg); }
+    table { width: 100%; border-collapse: collapse; background-color: var(--secondary-bg); font-family: 'Barlow', sans-serif;}
     th, td { padding: 15px; border-bottom: 1px solid var(--border-color); text-align: center; font-size: clamp(12px, 2.8vw, 16px); }
-    th { background-color: #111; color: var(--accent-color); font-weight: 700; text-transform: uppercase; }
+    th { background-color: rgba(0,200,83,0.1); color: var(--accent-color); font-weight: 700; text-transform: uppercase; }
     tbody tr:nth-child(even) { background-color: rgba(255, 255, 255, 0.02); }
-    tbody tr:hover { background-color: rgba(76, 175, 80, 0.1); transition: background-color 0.3s; }
+    tbody tr:hover { background-color: rgba(0, 200, 83, 0.1); transition: background-color 0.3s; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
@@ -132,114 +133,121 @@
       letter-spacing: 1px;
     }
 
-
     /* =========================================
-       2. CSS KHUSUS JADWAL PERTANDINGAN
+       2. CSS KHUSUS JADWAL & COUNTDOWN (DARI SCRIPT 2)
        ========================================= */
     .schedule-wrapper {
-      --sch-green: #00C853;
-      --sch-green-glow: rgba(0,200,83,0.18);
-      --sch-surface: rgba(17, 24, 20, 0.8);
-      --sch-surface2: rgba(23, 32, 21, 0.8);
-      --sch-border: rgba(0,200,83,0.15);
-      --sch-text: #e8f5e9;
-      --sch-muted: #6b8f72;
-      --sch-white: #ffffff;
+      --green: #00C853;
+      --green-dark: #007B33;
+      --green-glow: rgba(0,200,83,0.18);
+      --bg: #0a0f0d;
+      --surface: #111814;
+      --surface2: #172015;
+      --border: rgba(0,200,83,0.15);
+      --text: #e8f5e9;
+      --muted: #6b8f72;
+      --white: #ffffff;
       
       font-family: 'Barlow', sans-serif;
-      color: var(--sch-text);
+      color: var(--text);
       max-width: 860px;
       margin: 0 auto;
+      
+      /* Latar belakang keren dari script 2 khusus untuk area jadwal */
+      padding: 2rem 1rem;
+      border-radius: 8px;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,200,83,0.12) 0%, transparent 70%),
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,200,83,0.04) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,200,83,0.04) 40px);
     }
 
     .schedule-wrapper .header { text-align: center; margin-bottom: 3rem; animation: fadeDown 0.7s ease both; }
     .schedule-wrapper .header-badge {
-      display: inline-block; background: var(--sch-green-glow); border: 1px solid var(--sch-border);
-      color: var(--sch-green); font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem;
+      display: inline-block; background: var(--green-glow); border: 1px solid var(--border);
+      color: var(--green); font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem;
       font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.3rem 1rem;
       border-radius: 2px; margin-bottom: 1rem;
     }
     .schedule-wrapper .header h1 {
       font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.2rem, 8vw, 4.5rem);
-      font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; color: var(--sch-white);
+      font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; color: var(--white);
     }
-    .schedule-wrapper .header h1 span { color: var(--sch-green); }
+    .schedule-wrapper .header h1 span { color: var(--green); }
     .schedule-wrapper .header p {
-      margin-top: 0.75rem; color: var(--sch-muted); font-size: 0.95rem; font-weight: 300; letter-spacing: 0.05em; font-family: 'Barlow', sans-serif;
+      margin-top: 0.75rem; color: var(--muted); font-size: 0.95rem; font-weight: 300; letter-spacing: 0.05em; font-family: 'Barlow', sans-serif;
     }
 
+    /* COUNTDOWN STYLES */
+    .countdown-section { margin-bottom: 2.5rem; animation: fadeUp 0.6s 0.1s ease both; }
+    .countdown-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--green); text-align: center; margin-bottom: 0.4rem; }
+    .countdown-match-info { text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 700; text-transform: uppercase; color: var(--white); letter-spacing: 0.06em; margin-bottom: 1.25rem; }
+    .countdown-match-info span { color: var(--green); margin: 0 0.5rem; }
+    .countdown-match-info small { display: block; font-size: 0.65rem; font-weight: 400; color: var(--muted); letter-spacing: 0.15em; margin-top: 0.25rem; }
+    .countdown-grid { display: flex; justify-content: center; gap: 0.5rem; align-items: stretch; }
+    .countdown-unit { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.2rem 0.5rem 0.8rem; min-width: 72px; text-align: center; position: relative; flex: 1; max-width: 100px; transition: border-color 0.3s; }
+    .countdown-unit.active { border-color: var(--green); box-shadow: 0 0 18px var(--green-glow); }
+    .countdown-unit::after { content: ':'; position: absolute; right: -0.38rem; top: 50%; transform: translateY(-60%); font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900; color: var(--muted); line-height: 1; }
+    .countdown-unit:last-child::after { display: none; }
+    .countdown-num { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.2rem, 8vw, 3.5rem); font-weight: 900; color: var(--white); line-height: 1; letter-spacing: -0.02em; transition: color 0.3s; }
+    .countdown-unit.active .countdown-num { color: var(--green); }
+    .countdown-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; }
+    .countdown-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 2rem 0 2.5rem; }
+    
+    /* LIVE BANNER */
+    .live-banner { background: rgba(255,61,0,0.12); border: 1px solid rgba(255,61,0,0.4); border-radius: 4px; padding: 1rem 1.5rem; text-align: center; margin-bottom: 2rem; }
+    .live-banner-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 900; text-transform: uppercase; color: #ff3d00; letter-spacing: 0.1em; animation: pulse 1s infinite; }
+    .live-banner-match { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); text-transform: uppercase; margin-top: 0.3rem; letter-spacing: 0.05em; }
+
+    /* SCHEDULE LAYOUT */
     .filter-bar { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.6s 0.2s ease both; }
-    .filter-btn {
-      background: var(--sch-surface); border: 1px solid var(--sch-border); color: var(--sch-muted);
-      font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; padding: 0.5rem 1.2rem; border-radius: 2px;
-      cursor: pointer; transition: all 0.2s; flex: 1 1 auto; text-align: center; min-width: 80px; max-width: 140px;
-    }
-    .filter-btn:hover, .filter-btn.active { background: var(--sch-green); border-color: var(--sch-green); color: #000; }
+    .filter-btn { background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.5rem 1.2rem; border-radius: 2px; cursor: pointer; transition: all 0.2s; flex: 1 1 auto; text-align: center; min-width: 80px; max-width: 140px; }
+    .filter-btn:hover, .filter-btn.active { background: var(--green); border-color: var(--green); color: #000; }
 
     .month-group { margin-bottom: 2.5rem; animation: fadeUp 0.6s ease both; }
-    .month-label {
-      font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--sch-green); border-left: 3px solid var(--sch-green);
-      padding-left: 0.75rem; margin-bottom: 1rem; text-align: left;
-    }
+    .month-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--green); border-left: 3px solid var(--green); padding-left: 0.75rem; margin-bottom: 1rem; text-align: left;}
 
-    .match-card {
-      background: var(--sch-surface); border: 1px solid var(--sch-border); border-radius: 4px;
-      margin-bottom: 0.6rem; display: grid; grid-template-columns: 90px 1fr auto; align-items: center;
-      overflow: hidden; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; position: relative;
-      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); text-align: left;
-    }
-    .match-card::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--sch-green);
-      transform: scaleY(0); transition: transform 0.2s; transform-origin: bottom;
-    }
-    .match-card:hover { border-color: var(--sch-green); transform: translateX(4px); box-shadow: 0 0 24px var(--sch-green-glow); }
+    .match-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 0.6rem; display: grid; grid-template-columns: 90px 1fr auto; align-items: center; overflow: hidden; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; position: relative; text-align: left;}
+    .match-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--green); transform: scaleY(0); transition: transform 0.2s; transform-origin: bottom; }
+    .match-card:hover { border-color: var(--green); transform: translateX(4px); box-shadow: 0 0 24px var(--green-glow); }
     .match-card:hover::before { transform: scaleY(1); }
     .match-card.live { border-color: #ff3d00; }
     .match-card.live::before { background: #ff3d00; transform: scaleY(1); }
     .match-card.completed { opacity: 0.7; }
 
-    .date-block {
-      background: var(--sch-surface2); border-right: 1px solid var(--sch-border); padding: 1rem 0.75rem;
-      text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    }
-    .date-day { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900; color: var(--sch-white); line-height: 1; }
-    .date-month { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sch-muted); margin-top: 0.1rem; }
-    .date-dow { font-size: 0.6rem; color: var(--sch-green); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem; }
+    .date-block { background: var(--surface2); border-right: 1px solid var(--border); padding: 1rem 0.75rem; text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .date-day { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900; color: var(--white); line-height: 1; }
+    .date-month { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.1rem; }
+    .date-dow { font-size: 0.6rem; color: var(--green); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem; }
 
     .match-info { padding: 0.9rem 1.2rem; min-width: 0; }
     .match-teams { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
-    .team-home, .team-away { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; color: var(--sch-white); }
-    .vs-separator { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; color: var(--sch-muted); letter-spacing: 0.1em; flex-shrink: 0; }
+    .team-home, .team-away { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; color: var(--white); }
+    .vs-separator { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; flex-shrink: 0; }
     .score-live { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; color: #ff3d00; letter-spacing: 0.05em; flex-shrink: 0; animation: pulse 1.5s infinite; }
-    .score-final { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; color: var(--sch-green); letter-spacing: 0.05em; flex-shrink: 0; }
+    .score-final { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; color: var(--green); letter-spacing: 0.05em; flex-shrink: 0; }
     
     .match-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-    .meta-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: var(--sch-muted); font-weight: 400; }
+    .meta-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: var(--muted); font-weight: 400; }
     .meta-item svg { flex-shrink: 0; }
-    .comp-badge {
-      font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; background: var(--sch-green-glow); border: 1px solid var(--sch-border);
-      color: var(--sch-green); padding: 0.15rem 0.5rem; border-radius: 2px; white-space: nowrap;
-    }
+    .comp-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: var(--green-glow); border: 1px solid var(--border); color: var(--green); padding: 0.15rem 0.5rem; border-radius: 2px; }
 
-    .status-block { padding: 1rem 1.2rem; text-align: center; min-width: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .status-time { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--sch-white); letter-spacing: 0.05em; }
+    .status-block { padding: 1rem 1.2rem; text-align: center; min-width: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+    .status-time { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--white); letter-spacing: 0.05em; }
     .status-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.2rem; }
-    .status-label.upcoming { color: var(--sch-muted); }
+    .status-label.upcoming { color: var(--muted); }
     .status-label.live { color: #ff3d00; }
-    .status-label.done { color: var(--sch-green); }
+    .status-label.done { color: var(--green); }
     .live-dot { display: inline-block; width: 6px; height: 6px; background: #ff3d00; border-radius: 50%; margin-right: 4px; animation: pulse 1s infinite; }
     .venue-tag { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.4rem; border-radius: 2px; margin-top: 0.3rem; }
-    .venue-tag.home { background: rgba(0,200,83,0.15); color: var(--sch-green); }
-    .venue-tag.away { background: rgba(255,255,255,0.06); color: var(--sch-muted); }
-
-    #loading-status { text-align: center; font-size: 0.85rem; color: var(--sch-muted); margin-bottom: 1.5rem; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
+    .venue-tag.home { background: rgba(0,200,83,0.15); color: var(--green); }
+    .venue-tag.away { background: rgba(255,255,255,0.06); color: var(--muted); }
 
     .legend { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
-    .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--sch-muted); font-weight: 500; letter-spacing: 0.05em; }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; }
     .legend-dot { width: 8px; height: 8px; border-radius: 1px; }
+
+    #loading-status { text-align: center; font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
 
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
@@ -278,8 +286,10 @@
         <div class="header">
           <div class="header-badge">⚽ Musim 2025 / 2026</div>
           <h1>Jadwal <span>Pertandingan</span></h1>
-          <p>KOMPETISI DESA, TURNAMEN ANTAR TIM DAN FRIENDLY MATCH</p>
+          <p>BNS Football Club · Sukamanah Cup & Friendly Match</p>
         </div>
+
+        <div class="countdown-section" id="countdown-section"></div>
 
         <div class="filter-bar">
           <button class="filter-btn active" onclick="filterMatches('all', this)">Semua</button>
@@ -291,14 +301,13 @@
         </div>
 
         <div id="loading-status">⏳ Mengambil Data Jadwal...</div>
-        
         <div id="schedule-container"></div>
 
         <div class="legend">
-          <div class="legend-item"><div class="legend-dot" style="background:var(--sch-green)"></div> Selesai / Menang</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Selesai / Menang</div>
           <div class="legend-item"><div class="legend-dot" style="background:#ff3d00"></div> Sedang Berlangsung</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--sch-muted)"></div> Mendatang</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--sch-green);opacity:0.5"></div> Kandang</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--muted)"></div> Mendatang</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--green);opacity:0.5"></div> Kandang</div>
         </div>
       </div>
     </section>
@@ -413,14 +422,16 @@
       if (element) element.classList.add('active-link');
     }
 
-    // --- FUNGSI 2: JADWAL PERTANDINGAN (GOOGLE SHEETS) ---
+    // --- FUNGSI 2: JADWAL PERTANDINGAN & COUNTDOWN ---
     const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-f83POAmggxq22JBz1c-344Cfy3lcvnx8qrCV963vJLQa0bVbi-f68pYFuTDywKknuKiGqz0wdcR2/pub?gid=1494179036&single=true&output=csv';
     const monthNames = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
     const dayNames   = ['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
 
     let allMatches   = [];
     let activeFilter = 'all';
+    let countdownInterval = null;
 
+    // --- PARSER CSV GOOGLE SHEETS ---
     function parseCSV(csv) {
       const lines = csv.trim().split('\n').filter(l => l.trim());
       if (lines.length < 2) throw new Error('Data terlalu sedikit');
@@ -478,6 +489,93 @@
       }).filter(r => r.date && r.home && r.away);
     }
 
+    // --- COUNTDOWN (HITUNG MUNDUR) ---
+    function findNextMatch(matches) {
+      const now = new Date();
+      // Cek apakah ada pertandingan yang sedang "live"
+      const live = matches.find(m => m.status === 'live');
+      if (live) return { match: live, isLive: true };
+      
+      // Cari pertandingan mendatang yang waktunya paling dekat
+      const upcoming = matches
+        .filter(m => m.status === 'upcoming')
+        .map(m => {
+          const [h, min] = (m.time || '00:00').split(':').map(Number);
+          const d = new Date(m.date);
+          d.setHours(h || 0, min || 0, 0, 0);
+          return { match: m, dt: d };
+        })
+        .filter(x => x.dt > now)
+        .sort((a, b) => a.dt - b.dt);
+      return upcoming.length ? { match: upcoming[0].match, dt: upcoming[0].dt, isLive: false } : null;
+    }
+
+    function renderCountdown(matches) {
+      const section = document.getElementById('countdown-section');
+      if (!section) return;
+      if (countdownInterval) clearInterval(countdownInterval);
+
+      const found = findNextMatch(matches);
+      if (!found) { section.innerHTML = ''; return; }
+
+      if (found.isLive) {
+        section.innerHTML = `
+          <div class="live-banner">
+            <div class="live-banner-title"><span class="live-dot" style="width:10px;height:10px;margin-right:8px;display:inline-block;background:#ff3d00;border-radius:50%;animation:pulse 1s infinite;vertical-align:middle;"></span>LIVE SEKARANG</div>
+            <div class="live-banner-match">${found.match.home} <span style="color:#ff3d00;margin:0 0.5rem">VS</span> ${found.match.away}</div>
+          </div>`;
+        return;
+      }
+
+      const { match, dt } = found;
+      const bulanMap = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+      const d = new Date(match.date);
+      const tglStr = `${d.getDate()} ${bulanMap[d.getMonth()]} ${d.getFullYear()} · ${match.time} WIB`;
+
+      function tick() {
+        const now = new Date();
+        const diff = dt - now;
+        if (diff <= 0) {
+          clearInterval(countdownInterval);
+          renderCountdown(allMatches); // Refresh ketika waktu habis
+          return;
+        }
+        const days  = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const mins  = Math.floor((diff % 3600000) / 60000);
+        const secs  = Math.floor((diff % 60000) / 1000);
+
+        document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
+        document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+        document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+        document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+          document.getElementById(id)?.closest('.countdown-unit')?.classList.remove('active');
+        });
+        const activeId = days > 0 ? 'cd-days' : hours > 0 ? 'cd-hours' : mins > 0 ? 'cd-mins' : 'cd-secs';
+        document.getElementById(activeId)?.closest('.countdown-unit')?.classList.add('active');
+      }
+
+      section.innerHTML = `
+        <div class="countdown-label">⏱ Pertandingan Berikutnya</div>
+        <div class="countdown-match-info">
+          ${match.home} <span>VS</span> ${match.away}
+          <small>${match.comp || ''} · ${tglStr}</small>
+        </div>
+        <div class="countdown-grid">
+          <div class="countdown-unit"><div class="countdown-num" id="cd-days">00</div><div class="countdown-lbl">Hari</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="cd-hours">00</div><div class="countdown-lbl">Jam</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="cd-mins">00</div><div class="countdown-lbl">Menit</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="cd-secs">00</div><div class="countdown-lbl">Detik</div></div>
+        </div>
+        <div class="countdown-divider"></div>`;
+
+      tick();
+      countdownInterval = setInterval(tick, 1000);
+    }
+
+    // --- RENDER KARTU JADWAL ---
     function getMonthKey(dateStr) {
       const d = new Date(dateStr);
       return `${monthNames[d.getMonth()]} ${d.getFullYear()}`;
@@ -553,7 +651,7 @@
       const container = document.getElementById('schedule-container');
 
       if (allMatches.length === 0) {
-        container.innerHTML = `<div style="text-align:center;color:var(--sch-muted);padding:3rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.1em;line-height:2;">BELUM ADA DATA</div>`;
+        container.innerHTML = `<div style="text-align:center;color:var(--muted);padding:3rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.1em;line-height:2;">BELUM ADA DATA</div>`;
         return;
       }
 
@@ -562,7 +660,7 @@
         : allMatches.filter(m => m.status === filter);
 
       if (filtered.length === 0) {
-        container.innerHTML = `<div style="text-align:center;color:var(--sch-muted);padding:3rem;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;letter-spacing:0.1em;">TIDAK ADA PERTANDINGAN</div>`;
+        container.innerHTML = `<div style="text-align:center;color:var(--muted);padding:3rem;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;letter-spacing:0.1em;">TIDAK ADA PERTANDINGAN</div>`;
         return;
       }
 
@@ -586,7 +684,7 @@
       renderSchedule(type);
     }
 
-    // Load data otomatis saat web dibuka
+    // --- INISIALISASI SAAT HALAMAN DIBUKA ---
     (async () => {
       const statusEl = document.getElementById('loading-status');
       try {
@@ -602,6 +700,9 @@
         statusEl.innerHTML = `❌ Gagal memuat data jadwal: ${err.message}`;
         allMatches = [];
       }
+      
+      // Jalankan fungsi dari script kedua
+      renderCountdown(allMatches); 
       renderSchedule('all');
     })();
   </script>
