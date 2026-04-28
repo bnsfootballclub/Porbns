@@ -2,22 +2,24 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>BARUDAK NURUSSALAM FOOTBALL CLUB</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <style>
     /* =========================================
-       1. CSS WEBSITE UTAMA (BNS FOOTBALL CLUB)
+       1. CSS TEMA UTAMA & NAVIGASI
        ========================================= */
     :root {
-      --primary-bg: #0a0f0d; /* Disesuaikan sedikit dengan tema hijau gelap */
+      --primary-bg: #0a0f0d;
       --secondary-bg: #111814;
       --text-color: #ffffff;
-      --text-muted: #cccccc;
-      --accent-color: #00C853; /* Menggunakan hijau dari script kedua */
+      --text-muted: #6b8f72;
+      --accent-color: #00C853;
       --border-color: rgba(0,200,83,0.15);
+      --green-glow: rgba(0,200,83,0.18);
+      --surface2: #172015;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,242 +31,101 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* HEADER & NAVIGASI */
     header {
       background-color: var(--primary-bg);
-      padding: 20px 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      padding: 15px 10px;
       position: sticky;
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid var(--border-color);
       box-shadow: 0 4px 15px rgba(0, 200, 83, 0.1);
+      display: flex;
+      justify-content: center;
     }
 
-    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    /* Navigasi Horizontal Rapi */
+    nav { 
+      display: flex; 
+      flex-direction: row;
+      justify-content: center; 
+      align-items: center;
+      gap: clamp(10px, 3vw, 25px); 
+      width: 100%;
+      max-width: 900px;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none; /* Firefox */
+    }
+    nav::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 
     nav a {
       text-decoration: none;
       color: var(--text-color);
       font-weight: 600;
-      font-size: clamp(14px, 2.5vw, 18px);
-      transition: color 0.3s ease, transform 0.2s;
-    }
-
-    nav a:hover, nav a.active-link {
-      color: var(--accent-color);
-      transform: translateY(-2px);
-    }
-
-    /* KONTEN UTAMA & BAGIAN (SECTIONS) */
-    main { flex: 1; }
-
-    .section {
-      display: none;
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .section.active {
-      display: block;
-      animation: fadeIn 0.6s ease-in-out;
-    }
-
-    /* TIPOGRAFI HALAMAN LAIN (Profil, Pemain, dll) */
-    .section h2 {
-      font-size: clamp(20px, 5vw, 30px);
-      margin-bottom: 25px;
-      color: var(--text-color);
+      font-size: clamp(12px, 2.5vw, 15px);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      text-align: center;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+      padding: 5px 0;
     }
+    nav a:hover, nav a.active-link { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); }
 
-    .section h3 {
-      font-size: clamp(16px, 4vw, 22px);
-      margin-top: 40px;
-      margin-bottom: 15px;
-      color: var(--accent-color);
-      text-align: center;
-    }
-
-    .section p {
-      font-size: clamp(14px, 3.2vw, 18px);
-      margin-bottom: 12px;
-      line-height: 1.6;
-      text-align: center;
-      font-family: 'Barlow', sans-serif; /* Menggunakan barlow agar lebih mudah dibaca */
-    }
-
-    .section a { color: var(--accent-color); text-decoration: none; }
-    .section a:hover { opacity: 0.7; }
-
-    /* TABEL PROFESIONAL */
-    .table-container {
-      overflow-x: auto;
-      margin-top: 15px;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-    }
-
-    table { width: 100%; border-collapse: collapse; background-color: var(--secondary-bg); font-family: 'Barlow', sans-serif;}
-    th, td { padding: 15px; border-bottom: 1px solid var(--border-color); text-align: center; font-size: clamp(12px, 2.8vw, 16px); }
-    th { background-color: rgba(0,200,83,0.1); color: var(--accent-color); font-weight: 700; text-transform: uppercase; }
-    tbody tr:nth-child(even) { background-color: rgba(255, 255, 255, 0.02); }
-    tbody tr:hover { background-color: rgba(0, 200, 83, 0.1); transition: background-color 0.3s; }
+    main { flex: 1; }
+    .section { display: none; padding: 40px 20px; max-width: 1000px; margin: auto; }
+    .section.active { display: block; animation: fadeIn 0.6s ease-in-out; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    footer {
-      text-align: center;
-      padding: 25px 20px;
-      font-size: 14px;
-      border-top: 1px solid var(--border-color);
-      background-color: var(--primary-bg);
-      color: var(--text-muted);
-      letter-spacing: 1px;
-    }
+    /* =========================================
+       2. REUSABLE COMPONENTS
+       ========================================= */
+    .player-header { text-align: center; margin-bottom: 3rem; }
+    .header-badge { display: inline-block; background: var(--green-glow); border: 1px solid var(--border-color); color: var(--accent-color); font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 2px; margin-bottom: 1rem; }
+    .section-title { color: #fff; font-family: 'Barlow Condensed'; font-size: clamp(2rem, 8vw, 4rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; }
+    .section-title span { color: var(--accent-color); }
+    .loading-status { text-align: center; color: var(--text-muted); font-family: 'Barlow Condensed'; letter-spacing: 0.1em; margin: 2rem 0; }
 
     /* =========================================
-       2. CSS KHUSUS JADWAL & COUNTDOWN (DARI SCRIPT 2)
+       3. CSS JADWAL & COUNTDOWN
        ========================================= */
-    .schedule-wrapper {
-      --green: #00C853;
-      --green-dark: #007B33;
-      --green-glow: rgba(0,200,83,0.18);
-      --bg: #0a0f0d;
-      --surface: #111814;
-      --surface2: #172015;
-      --border: rgba(0,200,83,0.15);
-      --text: #e8f5e9;
-      --muted: #6b8f72;
-      --white: #ffffff;
-      
-      font-family: 'Barlow', sans-serif;
-      color: var(--text);
-      max-width: 860px;
-      margin: 0 auto;
-      
-      /* Latar belakang keren dari script 2 khusus untuk area jadwal */
-      padding: 2rem 1rem;
-      border-radius: 8px;
-      background-image:
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,200,83,0.12) 0%, transparent 70%),
-        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,200,83,0.04) 40px),
-        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,200,83,0.04) 40px);
-    }
+    .match-card { background: var(--secondary-bg); border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 0.6rem; display: grid; grid-template-columns: 80px 1fr 80px; align-items: center; overflow: hidden; }
+    .date-block { background: var(--surface2); border-right: 1px solid var(--border-color); padding: 1rem 0.5rem; text-align: center; }
+    .countdown-grid { display: flex; justify-content: center; gap: 0.5rem; }
+    .countdown-unit { background: var(--secondary-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 1rem 0.5rem; min-width: 65px; text-align: center; }
+    .countdown-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; }
+    .filter-bar { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center; }
+    .filter-btn { background: var(--secondary-bg); border: 1px solid var(--border-color); color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; padding: 0.5rem 1rem; cursor: pointer; border-radius: 2px; text-transform: uppercase; font-size: 0.8rem; }
+    .filter-btn.active { background: var(--accent-color); color: #000; }
 
-    .schedule-wrapper .header { text-align: center; margin-bottom: 3rem; animation: fadeDown 0.7s ease both; }
-    .schedule-wrapper .header-badge {
-      display: inline-block; background: var(--green-glow); border: 1px solid var(--border);
-      color: var(--green); font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem;
-      font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.3rem 1rem;
-      border-radius: 2px; margin-bottom: 1rem;
-    }
-    .schedule-wrapper .header h1 {
-      font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.2rem, 8vw, 4.5rem);
-      font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; color: var(--white);
-    }
-    .schedule-wrapper .header h1 span { color: var(--green); }
-    .schedule-wrapper .header p {
-      margin-top: 0.75rem; color: var(--muted); font-size: 0.95rem; font-weight: 300; letter-spacing: 0.05em; font-family: 'Barlow', sans-serif;
-    }
-
-    /* COUNTDOWN STYLES */
-    .countdown-section { margin-bottom: 2.5rem; animation: fadeUp 0.6s 0.1s ease both; }
-    .countdown-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--green); text-align: center; margin-bottom: 0.4rem; }
-    .countdown-match-info { text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 700; text-transform: uppercase; color: var(--white); letter-spacing: 0.06em; margin-bottom: 1.25rem; }
-    .countdown-match-info span { color: var(--green); margin: 0 0.5rem; }
-    .countdown-match-info small { display: block; font-size: 0.65rem; font-weight: 400; color: var(--muted); letter-spacing: 0.15em; margin-top: 0.25rem; }
-    .countdown-grid { display: flex; justify-content: center; gap: 0.5rem; align-items: stretch; }
-    .countdown-unit { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.2rem 0.5rem 0.8rem; min-width: 72px; text-align: center; position: relative; flex: 1; max-width: 100px; transition: border-color 0.3s; }
-    .countdown-unit.active { border-color: var(--green); box-shadow: 0 0 18px var(--green-glow); }
-    .countdown-unit::after { content: ':'; position: absolute; right: -0.38rem; top: 50%; transform: translateY(-60%); font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900; color: var(--muted); line-height: 1; }
-    .countdown-unit:last-child::after { display: none; }
-    .countdown-num { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.2rem, 8vw, 3.5rem); font-weight: 900; color: var(--white); line-height: 1; letter-spacing: -0.02em; transition: color 0.3s; }
-    .countdown-unit.active .countdown-num { color: var(--green); }
-    .countdown-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; }
-    .countdown-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 2rem 0 2.5rem; }
+    /* =========================================
+       4. CSS PEMAIN & MANAJEMEN
+       ========================================= */
+    .group-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-color); text-align: center; margin-bottom: 1.5rem; }
     
-    /* LIVE BANNER */
-    .live-banner { background: rgba(255,61,0,0.12); border: 1px solid rgba(255,61,0,0.4); border-radius: 4px; padding: 1rem 1.5rem; text-align: center; margin-bottom: 2rem; }
-    .live-banner-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 900; text-transform: uppercase; color: #ff3d00; letter-spacing: 0.1em; animation: pulse 1s infinite; }
-    .live-banner-match { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); text-transform: uppercase; margin-top: 0.3rem; letter-spacing: 0.05em; }
-
-    /* SCHEDULE LAYOUT */
-    .filter-bar { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.6s 0.2s ease both; }
-    .filter-btn { background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.5rem 1.2rem; border-radius: 2px; cursor: pointer; transition: all 0.2s; flex: 1 1 auto; text-align: center; min-width: 80px; max-width: 140px; }
-    .filter-btn:hover, .filter-btn.active { background: var(--green); border-color: var(--green); color: #000; }
-
-    .month-group { margin-bottom: 2.5rem; animation: fadeUp 0.6s ease both; }
-    .month-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--green); border-left: 3px solid var(--green); padding-left: 0.75rem; margin-bottom: 1rem; text-align: left;}
-
-    .match-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 0.6rem; display: grid; grid-template-columns: 90px 1fr auto; align-items: center; overflow: hidden; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; position: relative; text-align: left;}
-    .match-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--green); transform: scaleY(0); transition: transform 0.2s; transform-origin: bottom; }
-    .match-card:hover { border-color: var(--green); transform: translateX(4px); box-shadow: 0 0 24px var(--green-glow); }
-    .match-card:hover::before { transform: scaleY(1); }
-    .match-card.live { border-color: #ff3d00; }
-    .match-card.live::before { background: #ff3d00; transform: scaleY(1); }
-    .match-card.completed { opacity: 0.7; }
-
-    .date-block { background: var(--surface2); border-right: 1px solid var(--border); padding: 1rem 0.75rem; text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .date-day { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900; color: var(--white); line-height: 1; }
-    .date-month { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.1rem; }
-    .date-dow { font-size: 0.6rem; color: var(--green); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem; }
-
-    .match-info { padding: 0.9rem 1.2rem; min-width: 0; }
-    .match-teams { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
-    .team-home, .team-away { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; color: var(--white); }
-    .vs-separator { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; flex-shrink: 0; }
-    .score-live { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; color: #ff3d00; letter-spacing: 0.05em; flex-shrink: 0; animation: pulse 1.5s infinite; }
-    .score-final { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 800; color: var(--green); letter-spacing: 0.05em; flex-shrink: 0; }
+    .player-grid, .management-grid, .sponsor-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
     
-    .match-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-    .meta-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: var(--muted); font-weight: 400; }
-    .meta-item svg { flex-shrink: 0; }
-    .comp-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: var(--green-glow); border: 1px solid var(--border); color: var(--green); padding: 0.15rem 0.5rem; border-radius: 2px; }
+    /* Player Card */
+    .player-card { background: var(--secondary-bg); border: 1px solid var(--border-color); border-radius: 4px; display: flex; align-items: center; width: 100%; max-width: 310px; overflow: hidden; }
+    .player-photo { width: 80px; height: 85px; background: var(--surface2); border-right: 1px solid var(--border-color); flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .player-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .player-info { padding: 0.8rem 1rem; flex-grow: 1; }
+    .player-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 800; color: #fff; text-transform: uppercase; }
+    .player-pos { font-size: 0.65rem; color: var(--accent-color); font-weight: 600; text-transform: uppercase; }
 
-    .status-block { padding: 1rem 1.2rem; text-align: center; min-width: 90px; display: flex; flex-direction: column; align-items: center; justify-content: center;}
-    .status-time { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--white); letter-spacing: 0.05em; }
-    .status-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.2rem; }
-    .status-label.upcoming { color: var(--muted); }
-    .status-label.live { color: #ff3d00; }
-    .status-label.done { color: var(--green); }
-    .live-dot { display: inline-block; width: 6px; height: 6px; background: #ff3d00; border-radius: 50%; margin-right: 4px; animation: pulse 1s infinite; }
-    .venue-tag { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.4rem; border-radius: 2px; margin-top: 0.3rem; }
-    .venue-tag.home { background: rgba(0,200,83,0.15); color: var(--green); }
-    .venue-tag.away { background: rgba(255,255,255,0.06); color: var(--muted); }
+    /* Official & Sponsor Card */
+    .official-card, .sponsor-card { background: var(--secondary-bg); border: 1px solid var(--border-color); border-radius: 6px; width: 100%; max-width: 240px; display: flex; flex-direction: column; align-items: center; text-align: center; padding-bottom: 1rem; transition: 0.3s; text-decoration: none; }
+    .official-card:hover, .sponsor-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+    .official-photo, .sponsor-logo { width: 100%; height: 200px; background: var(--surface2); border-bottom: 1px solid var(--border-color); overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .official-photo img, .sponsor-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .sponsor-logo img { object-fit: contain; padding: 15px; }
 
-    .legend { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
-    .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; }
-    .legend-dot { width: 8px; height: 8px; border-radius: 1px; }
-
-    #loading-status { text-align: center; font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
-
-    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-    @media (max-width: 600px) {
-      .match-card { grid-template-columns: 72px 1fr auto; }
-      .date-day { font-size: 1.6rem; }
-      .team-home, .team-away { font-size: 0.95rem; }
-      .match-teams { gap: 0.4rem; }
-      .status-time { font-size: 1.1rem; }
-      .status-block { min-width: 70px; padding: 0.75rem 0.5rem; }
-      .match-info { padding: 0.75rem; }
-      .meta-item { font-size: 0.65rem; }
-      .filter-bar { gap: 0.3rem; }
-      .filter-btn { padding: 0.4rem 0.8rem; font-size: 0.75rem; min-width: 70px; }
-    }
+    footer { text-align: center; padding: 25px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 14px; }
   </style>
 </head>
 <body>
@@ -272,440 +133,187 @@
   <header>
     <nav>
       <a href="#" onclick="showSection('awal', this)" class="nav-link active-link">Beranda</a>
-      <a href="#" onclick="showSection('profil', this)" class="nav-link">Profil</a>
       <a href="#" onclick="showSection('pemain', this)" class="nav-link">Pemain</a>
       <a href="#" onclick="showSection('manajemen', this)" class="nav-link">Manajemen</a>
+      <a href="#" onclick="showSection('mitra', this)" class="nav-link">Mitra Club</a>
       <a href="#" onclick="showSection('sosial', this)" class="nav-link">Sosial Media</a>
     </nav>
   </header>
 
   <main>
-    
     <section id="awal" class="section active">
       <div class="schedule-wrapper">
-        <div class="header">
+        <div class="player-header">
           <div class="header-badge">⚽ Musim 2025 / 2026</div>
-          <h1>Jadwal <span>Pertandingan</span></h1>
-          <p>BNS Football Club · Sukamanah Cup & Friendly Match</p>
+          <h2 class="section-title">JADWAL <span>PERTANDINGAN</span></h2>
         </div>
-
-        <div class="countdown-section" id="countdown-section"></div>
-
+        <div id="countdown-section"></div>
         <div class="filter-bar">
           <button class="filter-btn active" onclick="filterMatches('all', this)">Semua</button>
           <button class="filter-btn" onclick="filterMatches('upcoming', this)">Mendatang</button>
-          <button class="filter-btn" onclick="filterMatches('live', this)">Live</button>
           <button class="filter-btn" onclick="filterMatches('completed', this)">Selesai</button>
-          <button class="filter-btn" onclick="filterMatches('home', this)">Kandang</button>
-          <button class="filter-btn" onclick="filterMatches('away', this)">Tandang</button>
         </div>
-
-        <div id="loading-status">⏳ Mengambil Data Jadwal...</div>
+        <div id="loading-schedule" class="loading-status">⏳ Mengambil Jadwal...</div>
         <div id="schedule-container"></div>
-
-        <div class="legend">
-          <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Selesai / Menang</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#ff3d00"></div> Sedang Berlangsung</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--muted)"></div> Mendatang</div>
-          <div class="legend-item"><div class="legend-dot" style="background:var(--green);opacity:0.5"></div> Kandang</div>
-        </div>
       </div>
-    </section>
-
-    <section id="profil" class="section">
-      <h2>Profil Klub</h2>
-      <p>Nama: <strong>BNS Football Club</strong></p>
-      <p>Nama Lengkap: <strong>Barudak Nurussalam Football Club</strong></p>
-      <p>Julukan: <strong>Barudak Nurussalam</strong></p>
-      <p>Tahun Berdiri: <strong>2014</strong></p>
-      <p>Lapangan: <strong>Sugema Sukamanah</strong></p>
-      <p>Alamat: <strong>Kp. Nurussalam RT 03 / RW 02 Ds. Sukamanah Kec. Rongga Kab. Bandung Barat 40566</strong></p>
-      <p>Level Kompetisi: <strong>Sukamanah Cup</strong></p>
-      <p>Manajemen: <strong>Forum Pemuda Nurussalam</strong></p>
-      <p>Pemilik: <strong>Masyarakat Nurussalam</strong></p>
     </section>
 
     <section id="pemain" class="section">
-      <h2>Daftar Pemain Sukamanah Cup 2025</h2>
-      <h3>Starting XI</h3>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr><th>Nama</th><th>Posisi</th><th>No</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Fardan</td><td>Goalkeeper</td><td>1</td></tr>
-            <tr><td>Mumus</td><td>Center Back</td><td>2</td></tr>
-            <tr><td>Sandi</td><td>Center Back</td><td>3</td></tr>
-            <tr><td>Fauzan</td><td>Right Back</td><td>4</td></tr>
-            <tr><td>Hadiana</td><td>Left Back</td><td>5</td></tr>
-            <tr><td>Sofwan</td><td>Defender Midfielder</td><td>6</td></tr>
-            <tr><td>Fiat</td><td>Center Midfielder</td><td>7</td></tr>
-            <tr><td>Aji</td><td>Attacking Midfielder</td><td>8</td></tr>
-            <tr><td>Fadhil</td><td>Left Winger</td><td>9</td></tr>
-            <tr><td>Hendrik</td><td>Right Winger</td><td>10</td></tr>
-            <tr><td>Fauji</td><td>Forward</td><td>11</td></tr>
-          </tbody>
-        </table>
+      <div class="player-header">
+        <div class="header-badge">🏅 Skuad Utama</div>
+        <h2 class="section-title">DAFTAR <span>PEMAIN</span></h2>
       </div>
-
-      <h3>Pemain Cadangan</h3>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr><th>Nama</th><th>Posisi</th><th>No</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Abdan</td><td>Goalkeeper</td><td>12</td></tr>
-            <tr><td>Habib</td><td>Center Back</td><td>13</td></tr>
-            <tr><td>Hasbi</td><td>Center Back</td><td>14</td></tr>
-            <tr><td>Kaka</td><td>Center Back</td><td>15</td></tr>
-            <tr><td>Ali</td><td>Center Back</td><td>16</td></tr>
-            <tr><td>Hafiz</td><td>Left Back</td><td>17</td></tr>
-            <tr><td>Azmi</td><td>Right Back</td><td>18</td></tr>
-            <tr><td>Fajar</td><td>Goalkeeper</td><td>19</td></tr>
-            <tr><td>Gilang</td><td>Defender Midfielder</td><td>20</td></tr>
-            <tr><td>Riyad</td><td>Right Winger</td><td>21</td></tr>
-            <tr><td>Nazar</td><td>Left Winger</td><td>22</td></tr>
-            <tr><td>Puja</td><td>Right Winger</td><td>23</td></tr>
-            <tr><td>Murofi</td><td>Forward</td><td>24</td></tr>
-            <tr><td>Prabu Siliwangi</td><td>Dukun</td><td>25</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <div id="loading-players" class="loading-status">⏳ Mengambil Data Pemain...</div>
+      <div id="player-container"></div>
     </section>
 
     <section id="manajemen" class="section">
-      <h2>STRUKTUR MANAJEMEN</h2>
-      <p>Dewan:<br><strong>DKM Nurussalam<br>Forum Pemuda Nurussalam</strong></p>
-      <p>Ketua:<br><strong>Nasrulloh</strong></p>
-      <p>Manager Tim:<br><strong>Ayep Taryana</strong></p>
-      <p>Pelatih:<br><strong>Coach Taryat Ajum</strong></p>
-      <p>Asisten Pelatih:<br><strong>Triyanto</strong></p>
-      <p>Fisioterapis:<br><strong>Ayep Taryana<br>Mang Rahmat</strong></p>
-      <p>Media Officer:<br><strong>Faiz Ahmad</strong></p>
-      <p>Financial Manager:<br><strong>Fardan</strong></p>
-      <p>Sport Manager:<br><strong>Ahsan Fauji</strong></p>
-      <p>Apparel Kit:<br><strong>Daniel Affarel</strong></p>
-      <p>Sponsorship:<br><strong>Toko Silvi<br>La Familia<br>Mang Ure</strong></p>
+      <div class="player-header">
+        <div class="header-badge">🏛️ Manajemen Tim</div>
+        <h2 class="section-title">STRUKTUR <span>KLUB</span></h2>
+      </div>
+      <div id="loading-management" class="loading-status">⏳ Mengambil Data Manajemen...</div>
+      <div id="management-container"></div>
+    </section>
+
+    <section id="mitra" class="section">
+      <div class="player-header">
+        <div class="header-badge">🤝 Partner Resmi</div>
+        <h2 class="section-title">OUR <span>SPONSORS</span></h2>
+      </div>
+      <div id="loading-sponsor" class="loading-status">⏳ Mengambil Data Sponsor...</div>
+      <div id="sponsor-grid" class="sponsor-grid"></div>
     </section>
 
     <section id="sosial" class="section">
-      <h2>Sosial Media</h2>
-      <p><strong>Instagram:</strong> <a href="https://www.instagram.com/bnsfootballclub/" target="_blank">@bnsfootballclub</a></p>
-      <p><strong>Youtube:</strong> <a href="https://m.youtube.com/@porbns" target="_blank">BNS Football Club</a></p>
-      <p><strong>Web Design:</strong> <a href="https://www.instagram.com/fzachmd" target="_blank">Faiz Ahmad</a></p>
-      
-      <h3>Notebook</h3>
-      <p>Untuk friendly match dan sponsorship bisa melalui DM Instagram atau WhatsApp pada nomor berikut:</p>
-      <p>Fardan : <strong>+62 838-2028-3874</strong></p>
+        <h2 style="text-align:center; margin-bottom: 20px;">SOSIAL MEDIA</h2>
+        <div style="text-align:center;">
+          <p>Instagram: <a href="https://www.instagram.com/bnsfootballclub/" target="_blank" style="color: var(--accent-color); text-decoration:none;">@bnsfootballclub</a></p>
+          <p>YouTube: <a href="https://m.youtube.com/@porbns" target="_blank" style="color: var(--accent-color); text-decoration:none;">BNS Football Club</a></p>
+        </div>
     </section>
-
   </main>
 
-  <footer>
-    &copy; 2025 Forum Pemuda Nurussalam. All Rights Reserved.
-  </footer>
+  <footer>&copy; 2025 Forum Pemuda Nurussalam. All Rights Reserved.</footer>
 
   <script>
-    // --- FUNGSI 1: NAVIGASI MENU ---
+    const JADWAL_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-f83POAmggxq22JBz1c-344Cfy3lcvnx8qrCV963vJLQa0bVbi-f68pYFuTDywKknuKiGqz0wdcR2/pub?gid=1494179036&single=true&output=csv';
+    const PEMAIN_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRDlNa1U2AqiysTjEUCYd9GfPgomdui-4kuH8JPlYWQyeq0n-26BOi0kjSZVSumT3JuzKi7gFeLJbWd/pub?gid=0&single=true&output=csv';
+    const MANAJEMEN_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-f83POAmggxq22JBz1c-344Cfy3lcvnx8qrCV963vJLQa0bVbi-f68pYFuTDywKknuKiGqz0wdcR2/pub?gid=262742881&single=true&output=csv';
+    const SPONSOR_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-f83POAmggxq22JBz1c-344Cfy3lcvnx8qrCV963vJLQa0bVbi-f68pYFuTDywKknuKiGqz0wdcR2/pub?gid=1459346514&single=true&output=csv';
+
+    // URUTAN POSISI YANG DIINGINKAN
+    const POSISI_ORDER = ["Kiper", "Bek Tengah", "Bek Sayap", "Gelandang", "Penyerang Sayap", "Penyerang"];
+
+    let allMatches = [], allPlayers = [], allManagement = [];
+
     function showSection(id, element) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => section.classList.remove('active'));
-
-      const targetSection = document.getElementById(id);
-      if (targetSection) targetSection.classList.add('active');
-
-      const navLinks = document.querySelectorAll('.nav-link');
-      navLinks.forEach(link => link.classList.remove('active-link'));
-
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active-link'));
       if (element) element.classList.add('active-link');
+      window.scrollTo(0,0);
     }
 
-    // --- FUNGSI 2: JADWAL PERTANDINGAN & COUNTDOWN ---
-    const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-f83POAmggxq22JBz1c-344Cfy3lcvnx8qrCV963vJLQa0bVbi-f68pYFuTDywKknuKiGqz0wdcR2/pub?gid=1494179036&single=true&output=csv';
-    const monthNames = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-    const dayNames   = ['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
-
-    let allMatches   = [];
-    let activeFilter = 'all';
-    let countdownInterval = null;
-
-    // --- PARSER CSV GOOGLE SHEETS ---
     function parseCSV(csv) {
       const lines = csv.trim().split('\n').filter(l => l.trim());
-      if (lines.length < 2) throw new Error('Data terlalu sedikit');
+      if (lines.length < 2) return [];
       const headers = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/"/g,''));
-
-      const bulanMap = {
-        januari:0,februari:1,maret:2,april:3,mei:4,juni:5, juli:6,agustus:7,september:8,oktober:9,november:10,desember:11,
-        january:0,february:1,march:2,april:3,may:4,june:5, july:6,august:7,october:9,december:11
-      };
-
-      function normalizeDate(val) {
-        if (!val) return val;
-        if (/^\d{4}-\d{2}-\d{2}$/.test(val)) return val; 
-        const m1 = val.match(/(\d{1,2})\s+(\w+)\s+(\d{4})/i);
-        if (m1) {
-          const bln = bulanMap[m1[2].toLowerCase()];
-          if (bln !== undefined) return `${m1[3]}-${String(bln+1).padStart(2,'0')}-${String(m1[1]).padStart(2,'0')}`;
-        }
-        const m2 = val.match(/(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})/);
-        if (m2) return `${m2[3]}-${String(m2[2]).padStart(2,'0')}-${String(m2[1]).padStart(2,'0')}`;
-        return val;
-      }
-
-      function normalizeVenue(val) {
-        if (!val) return 'home';
-        const v = val.toLowerCase().trim();
-        if (v === 'kandang' || v === 'home') return 'home';
-        if (v === 'tandang' || v === 'away') return 'away';
-        return v;
-      }
-
-      function normalizeStatus(val) {
-        if (!val) return 'upcoming';
-        const s = val.toLowerCase().trim();
-        if (['complited','compelted','completed','selesai'].includes(s)) return 'completed';
-        if (['live','berlangsung','sedang'].includes(s)) return 'live';
-        return 'upcoming'; 
-      }
-
       return lines.slice(1).map(line => {
-        const cols = [];
-        let cur = '', inQ = false;
-        for (let i = 0; i < line.length; i++) {
-          if (line[i] === '"') { inQ = !inQ; continue; }
-          if (line[i] === ',' && !inQ) { cols.push(cur.trim()); cur = ''; continue; }
-          cur += line[i];
+        const cols = []; let cur = '', inQ = false;
+        for (let char of line) {
+          if (char === '"') inQ = !inQ;
+          else if (char === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+          else cur += char;
         }
         cols.push(cur.trim());
         const obj = {};
         headers.forEach((h, i) => obj[h] = (cols[i] || '').replace(/"/g,'').trim());
-        obj.date   = normalizeDate(obj.date);
-        obj.venue  = normalizeVenue(obj.venue);
-        obj.status = normalizeStatus(obj.status);
         return obj;
-      }).filter(r => r.date && r.home && r.away);
+      });
     }
 
-    // --- COUNTDOWN (HITUNG MUNDUR) ---
-    function findNextMatch(matches) {
-      const now = new Date();
-      // Cek apakah ada pertandingan yang sedang "live"
-      const live = matches.find(m => m.status === 'live');
-      if (live) return { match: live, isLive: true };
-      
-      // Cari pertandingan mendatang yang waktunya paling dekat
-      const upcoming = matches
-        .filter(m => m.status === 'upcoming')
-        .map(m => {
-          const [h, min] = (m.time || '00:00').split(':').map(Number);
-          const d = new Date(m.date);
-          d.setHours(h || 0, min || 0, 0, 0);
-          return { match: m, dt: d };
-        })
-        .filter(x => x.dt > now)
-        .sort((a, b) => a.dt - b.dt);
-      return upcoming.length ? { match: upcoming[0].match, dt: upcoming[0].dt, isLive: false } : null;
+    function getDirectImg(url) {
+      if (!url) return '';
+      const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+      return match ? `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800` : url;
     }
 
-    function renderCountdown(matches) {
-      const section = document.getElementById('countdown-section');
-      if (!section) return;
-      if (countdownInterval) clearInterval(countdownInterval);
-
-      const found = findNextMatch(matches);
-      if (!found) { section.innerHTML = ''; return; }
-
-      if (found.isLive) {
-        section.innerHTML = `
-          <div class="live-banner">
-            <div class="live-banner-title"><span class="live-dot" style="width:10px;height:10px;margin-right:8px;display:inline-block;background:#ff3d00;border-radius:50%;animation:pulse 1s infinite;vertical-align:middle;"></span>LIVE SEKARANG</div>
-            <div class="live-banner-match">${found.match.home} <span style="color:#ff3d00;margin:0 0.5rem">VS</span> ${found.match.away}</div>
-          </div>`;
-        return;
-      }
-
-      const { match, dt } = found;
-      const bulanMap = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
-      const d = new Date(match.date);
-      const tglStr = `${d.getDate()} ${bulanMap[d.getMonth()]} ${d.getFullYear()} · ${match.time} WIB`;
-
-      function tick() {
-        const now = new Date();
-        const diff = dt - now;
-        if (diff <= 0) {
-          clearInterval(countdownInterval);
-          renderCountdown(allMatches); // Refresh ketika waktu habis
-          return;
-        }
-        const days  = Math.floor(diff / 86400000);
-        const hours = Math.floor((diff % 86400000) / 3600000);
-        const mins  = Math.floor((diff % 3600000) / 60000);
-        const secs  = Math.floor((diff % 60000) / 1000);
-
-        document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
-        document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-        document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
-        document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
-
-        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
-          document.getElementById(id)?.closest('.countdown-unit')?.classList.remove('active');
-        });
-        const activeId = days > 0 ? 'cd-days' : hours > 0 ? 'cd-hours' : mins > 0 ? 'cd-mins' : 'cd-secs';
-        document.getElementById(activeId)?.closest('.countdown-unit')?.classList.add('active');
-      }
-
-      section.innerHTML = `
-        <div class="countdown-label">⏱ Pertandingan Berikutnya</div>
-        <div class="countdown-match-info">
-          ${match.home} <span>VS</span> ${match.away}
-          <small>${match.comp || ''} · ${tglStr}</small>
-        </div>
-        <div class="countdown-grid">
-          <div class="countdown-unit"><div class="countdown-num" id="cd-days">00</div><div class="countdown-lbl">Hari</div></div>
-          <div class="countdown-unit"><div class="countdown-num" id="cd-hours">00</div><div class="countdown-lbl">Jam</div></div>
-          <div class="countdown-unit"><div class="countdown-num" id="cd-mins">00</div><div class="countdown-lbl">Menit</div></div>
-          <div class="countdown-unit"><div class="countdown-num" id="cd-secs">00</div><div class="countdown-lbl">Detik</div></div>
-        </div>
-        <div class="countdown-divider"></div>`;
-
-      tick();
-      countdownInterval = setInterval(tick, 1000);
-    }
-
-    // --- RENDER KARTU JADWAL ---
-    function getMonthKey(dateStr) {
-      const d = new Date(dateStr);
-      return `${monthNames[d.getMonth()]} ${d.getFullYear()}`;
-    }
-
-    function buildCard(m) {
-      const d = new Date(m.date);
-      const day  = d.getDate();
-      const mon  = monthNames[d.getMonth()].substring(0,3).toUpperCase();
-      const dow  = dayNames[d.getDay()];
-      const score = m.score || '';
-      const stadium = m.stadium || (m.venue === 'home' ? 'Stadion Kandang' : 'Stadion Tamu');
-
-      let statusHTML = '';
-      if (m.status === 'live') {
-        statusHTML = `<div class="status-block">
-          <div class="status-time score-live" style="font-size:1.1rem">${score}</div>
-          <div class="status-label live"><span class="live-dot"></span>LIVE</div>
-          <div class="venue-tag ${m.venue}">${m.venue === 'home' ? 'KANDANG' : 'TANDANG'}</div>
-        </div>`;
-      } else if (m.status === 'completed') {
-        statusHTML = `<div class="status-block">
-          <div class="status-time score-final">${score}</div>
-          <div class="status-label done">SELESAI</div>
-          <div class="venue-tag ${m.venue}">${m.venue === 'home' ? 'KANDANG' : 'TANDANG'}</div>
-        </div>`;
-      } else {
-        statusHTML = `<div class="status-block">
-          <div class="status-time">${m.time}</div>
-          <div class="status-label upcoming">WIB</div>
-          <div class="venue-tag ${m.venue}">${m.venue === 'home' ? 'KANDANG' : 'TANDANG'}</div>
-        </div>`;
-      }
-
-      const vsOrScore = m.status === 'live' ? `<span class="score-live">${score}</span>`
-        : m.status === 'completed' ? `<span class="score-final">${score}</span>`
-        : `<span class="vs-separator">VS</span>`;
-
-      const timeLabel = m.status === 'upcoming' ? m.time + ' WIB'
-        : m.status === 'live' ? 'Sedang berlangsung' : 'Sudah selesai';
-
-      return `
-        <div class="match-card ${m.status}" data-status="${m.status}" data-venue="${m.venue}">
-          <div class="date-block">
-            <div class="date-day">${day}</div>
-            <div class="date-month">${mon}</div>
-            <div class="date-dow">${dow}</div>
-          </div>
-          <div class="match-info">
-            <div class="match-teams">
-              <span class="team-home">${m.home}</span>
-              ${vsOrScore}
-              <span class="team-away">${m.away}</span>
-            </div>
-            <div class="match-meta">
-              <span class="comp-badge">${m.comp || '-'}</span>
-              <span class="meta-item">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                ${timeLabel}
-              </span>
-              <span class="meta-item">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                ${stadium}
-              </span>
-            </div>
-          </div>
-          ${statusHTML}
-        </div>`;
-    }
-
-    function renderSchedule(filter) {
-      activeFilter = filter;
-      const container = document.getElementById('schedule-container');
-
-      if (allMatches.length === 0) {
-        container.innerHTML = `<div style="text-align:center;color:var(--muted);padding:3rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.1em;line-height:2;">BELUM ADA DATA</div>`;
-        return;
-      }
-
-      const filtered = filter === 'all' ? allMatches
-        : filter === 'home' || filter === 'away' ? allMatches.filter(m => m.venue === filter)
-        : allMatches.filter(m => m.status === filter);
-
-      if (filtered.length === 0) {
-        container.innerHTML = `<div style="text-align:center;color:var(--muted);padding:3rem;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;letter-spacing:0.1em;">TIDAK ADA PERTANDINGAN</div>`;
-        return;
-      }
-
+    // RENDER PEMAIN DENGAN URUTAN POSISI
+    function renderPlayers() {
+      const container = document.getElementById('player-container');
       const grouped = {};
-      filtered.forEach(m => {
-        const key = getMonthKey(m.date);
-        if (!grouped[key]) grouped[key] = [];
-        grouped[key].push(m);
+      
+      allPlayers.forEach(p => {
+        const pos = p.posisi || 'Lainnya';
+        if (!grouped[pos]) grouped[pos] = [];
+        grouped[pos].push(p);
       });
 
-      container.innerHTML = Object.entries(grouped).map(([month, ms], i) => `
-        <div class="month-group" style="animation-delay:${i * 0.1}s">
-          <div class="month-label">${month}</div>
-          ${ms.map(buildCard).join('')}
-        </div>`).join('');
+      // Tampilkan berdasarkan urutan POSISI_ORDER
+      container.innerHTML = POSISI_ORDER.map(pos => {
+        if (!grouped[pos]) return '';
+        return `
+          <div class="position-group">
+            <div class="group-title">${pos}</div>
+            <div class="player-grid">
+              ${grouped[pos].map(p => `
+                <div class="player-card">
+                  <div class="player-photo">
+                    ${p.foto ? `<img src="${getDirectImg(p.foto)}">` : '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>'}
+                  </div>
+                  <div class="player-info">
+                    <div class="player-name">${p.nama}</div>
+                    <div class="player-pos">${p.posisi}</div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
     }
+
+    function renderSchedule(filter = 'all') {
+      const container = document.getElementById('schedule-container');
+      const filtered = allMatches.filter(m => filter === 'all' ? true : (m.status||'').toLowerCase().includes(filter.toLowerCase()));
+      container.innerHTML = filtered.map(m => {
+        const d = new Date(m.date), day = d.getDate() || '??', mon = d.toLocaleString('id-ID', {month:'short'}).toUpperCase();
+        return `<div class="match-card"><div class="date-block"><div style="font-size:1.5rem; font-weight:900;">${day}</div><div style="font-size:0.6rem; color:var(--accent-color);">${mon}</div></div><div style="padding-left:10px;"><div style="font-family:'Barlow Condensed'; font-weight:800;">${m.home} VS ${m.away}</div><div style="font-size:0.6rem; color:var(--text-muted);">${m.comp}</div></div><div style="text-align:center; font-weight:900; color:var(--accent-color);">${m.score || '-'}</div></div>`;
+      }).join('');
+    }
+
+    async function init() {
+      try {
+        const [resJ, resP, resM, resS] = await Promise.all([fetch(JADWAL_URL), fetch(PEMAIN_URL), fetch(MANAJEMEN_URL), fetch(SPONSOR_URL)]);
+        
+        allMatches = parseCSV(await resJ.text());
+        document.getElementById('loading-schedule').style.display = 'none';
+        renderSchedule();
+
+        allPlayers = parseCSV(await resP.text());
+        document.getElementById('loading-players').style.display = 'none';
+        renderPlayers();
+
+        // Manajemen & Sponsor Render (Simpel)
+        const mgmt = parseCSV(await resM.text());
+        document.getElementById('loading-management').style.display = 'none';
+        document.getElementById('management-container').innerHTML = `<div class="management-grid">${mgmt.map(m => `<div class="official-card"><div class="official-photo">${m.foto ? `<img src="${getDirectImg(m.foto)}">` : ''}</div><div class="official-role">${m.jabatan}</div><div class="official-name">${m.nama}</div></div>`).join('')}</div>`;
+
+        const spnsr = parseCSV(await resS.text());
+        document.getElementById('loading-sponsor').style.display = 'none';
+        document.getElementById('sponsor-grid').innerHTML = spnsr.map(s => `<a href="${s.link}" target="_blank" class="sponsor-card"><div class="sponsor-logo"><img src="${getDirectImg(s.logo)}"></div><div class="sponsor-name">${s.nama}</div></a>`).join('');
+
+      } catch (e) { console.error(e); }
+    }
+
+    init();
 
     function filterMatches(type, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       renderSchedule(type);
     }
-
-    // --- INISIALISASI SAAT HALAMAN DIBUKA ---
-    (async () => {
-      const statusEl = document.getElementById('loading-status');
-      try {
-        const res = await fetch(SHEET_URL);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const csv = await res.text();
-        allMatches = parseCSV(csv);
-        
-        if (allMatches.length === 0) throw new Error('Tidak ada baris data valid');
-        statusEl.style.display = 'none';
-      } catch (err) {
-        statusEl.style.color = '#ff3d00';
-        statusEl.innerHTML = `❌ Gagal memuat data jadwal: ${err.message}`;
-        allMatches = [];
-      }
-      
-      // Jalankan fungsi dari script kedua
-      renderCountdown(allMatches); 
-      renderSchedule('all');
-    })();
   </script>
-
 </body>
 </html>
